@@ -1,0 +1,108 @@
+
+        <div class="col-lg4"> 
+          <!--creation de notre champ de saisi et le bouton submit-->
+          <form class="row g-3">
+            <div class="col-auto">
+              <input type="text" class="form-control" id="entretache" placeholder="Entrez la tache">
+            </div>
+            <div class="col-auto">
+              <button type="button" class="btn btn-primary mb-3" (click)="creerTache()">Envoyer</button>
+            </div>
+          </form>
+        </div>
+        <!--cont-->
+        <div class="container">
+          <!--row-->
+          <div class="row">
+              <!--col-->
+              <div class="col-lg-12">
+               <div class="container-fluid pt-3" >
+                  <h3 class="font-weight-light text-white">Kanban Board</h3>
+                  <div class="small  text-light">Drag and drop between swim lanes</div>
+                  <div class="row flex-row flex-sm-nowrap py-3">
+                      <div class="col-sm-6 col-md-4 col-xl-3">
+                          <div class="col-lg-12">
+                              <!--hjjkokookoi-->
+                          </div>
+                      </div>
+                  </div>
+               </div>           
+          
+              </div><!--fin col-->
+          </div><!--fin row-->
+          <div class="container">
+              <div class="row">
+                <div class="col-sm">
+                 <!---aaaaaa-->
+                 <div class="dropzone rounded" ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="clearDrop(event)"> &nbsp; </div>
+                 <div class="card draggable shadow-sm" id="cd2" draggable="true" ondragstart="drag(event)">
+                     <div class="card-body p-2">
+                         <div class="card-title">
+                             <img src="//placehold.it/30" class="rounded-circle float-right">
+                             <a href="" class="lead font-weight-light">Ouvrir</a>
+                         </div>
+                         <small *ngIf="liste.length==0">Aucune tache pour saisie pour le moment.</small>
+                         <div class="tasks" id="backlog" *ngFor="let item of liste">
+                             <div class="card mb-3 cursor-grab">
+                                 <div class="card-body">
+                                     <p class="mb-0">{{item.champTache}}</p>
+                                   </div>
+                             </div>
+                             <button class="btn btn-primary btn-sm" id="bt" (click)="tacheEnCours(item?.champId, 'Encours')">clic1</button><br> <br>
+                             <button class="btn btn-primary btn-sm" (click)="tacheTermine(item?.champId, 'Terminer')">clic2</button>
+                         </div>
+                        
+                     </div>
+                 </div>
+                 <!---bbbbbbb-->
+                </div>
+                <div class="col-sm">
+                  <!---aaaaaa-->
+                  <div class="dropzone rounded" ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="clearDrop(event)"> &nbsp; </div>
+                  <div class="card draggable shadow-sm" id="cd2" draggable="true" ondragstart="drag(event)">
+                      <div class="card-body p-2">
+                          <div class="card-title">
+                              <img src="//placehold.it/30" class="rounded-circle float-right">
+                              <a href="" class="lead font-weight-light">En cours</a>
+                          </div>
+                            <small *ngIf="liste.length==0">Aucune tache pour saisie pour le moment.</small>
+                          <div class="tasks" id="backlog" *ngFor="let item of listeEnCours" >
+                              <div class="card mb-3 cursor-grab">
+                                  <div class="card-body">
+                                      <p class="mb-0">{{item.champTache}}</p>
+                                    </div>
+                              </div>
+                          </div>
+                         
+                         <!-- <button class="btn btn-primary btn-sm">View</button>-->
+                      </div>
+                  </div>
+                  <!---bbbbbbb-->
+                </div>
+                <div class="col-sm">
+                   <!---aaaaaa-->
+                   <div class="dropzone rounded" ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="clearDrop(event)"> &nbsp; </div>
+                   <div class="card draggable shadow-sm" id="cd2" draggable="true" ondragstart="drag(event)">
+                       <div class="card-body p-2">
+                           <div class="card-title">
+                               <img src="//placehold.it/30" class="rounded-circle float-right">
+                               <a href="" class="lead font-weight-light">Terminer</a>
+                           </div>
+                           <small *ngIf="liste.length==0">Aucune tache pour saisie pour le moment.</small>
+                           <div class="tasks" id="backlog" *ngFor="let item of listeTermine">
+                               <div class="card mb-3 cursor-grab">
+                                   <div class="card-body">
+                                       <p class="mb-0">{{item.champTache}}</p>
+                                     </div>
+                               </div>
+                           </div>
+                          <!--<button class="btn btn-primary btn-sm">View</button>--> 
+                       </div>
+                   </div>
+                   <!---bbbbbbb-->
+                </div>
+              </div>
+            </div>
+
+        </div><!--fin cont-->
+            
